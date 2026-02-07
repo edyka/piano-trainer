@@ -264,7 +264,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({
       display: 'flex',
       flexDirection: 'column',
       height: '100vh',
-      backgroundColor: THEME.bgDark,
+      background: `linear-gradient(180deg, ${THEME.bgDark} 0%, #0d0d1a 100%)`,
       position: 'relative',
     }}>
       {/* Top controls */}
@@ -301,10 +301,18 @@ export const GameScreen: React.FC<GameScreenProps> = ({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: 'rgba(0,0,0,0.5)',
+            background: 'rgba(0,0,0,0.5)',
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
             zIndex: 50,
           }}>
-            <div style={{ color: THEME.textBright, fontSize: '36px', fontWeight: 'bold' }}>
+            <div style={{
+              color: THEME.textBright,
+              fontSize: '36px',
+              fontWeight: 800,
+              letterSpacing: '4px',
+              textShadow: `0 0 30px ${THEME.primary}60`,
+            }}>
               PAUSED
             </div>
           </div>

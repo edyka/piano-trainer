@@ -47,7 +47,9 @@ export const Piano: React.FC<PianoProps> = React.memo(({ activeNotes, nextExpect
       height: '180px',
       display: 'flex',
       backgroundColor: THEME.bgDark,
-      borderTop: `2px solid ${THEME.hitLine}`,
+      borderTop: '3px solid transparent',
+      borderImage: `${THEME.primaryGradient} 1`,
+      boxShadow: `inset 0 6px 20px rgba(0,0,0,0.4), 0 -4px 16px rgba(77, 171, 247, 0.15)`,
       userSelect: 'none',
     }}>
       {/* White keys */}

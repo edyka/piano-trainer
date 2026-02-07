@@ -19,9 +19,11 @@ export const PianoKey: React.FC<PianoKeyProps> = React.memo(({ midi, isBlack, is
     position: 'absolute',
     width: '60%',
     height: '62%',
-    backgroundColor: isActive ? noteColor : THEME.blackKey,
+    background: isActive
+      ? `linear-gradient(180deg, ${noteColor} 0%, ${noteColor}cc 100%)`
+      : 'linear-gradient(180deg, #3a3a3a 0%, #1a1a1a 100%)',
     border: '1px solid #111',
-    borderRadius: '0 0 5px 5px',
+    borderRadius: '0 0 6px 6px',
     zIndex: 2,
     display: 'flex',
     flexDirection: 'column',
@@ -29,33 +31,39 @@ export const PianoKey: React.FC<PianoKeyProps> = React.memo(({ midi, isBlack, is
     justifyContent: 'flex-end',
     paddingBottom: '6px',
     cursor: 'pointer',
-    transition: 'background-color 0.08s',
-    boxShadow: isActive ? `0 0 15px ${noteColor}` : '2px 2px 4px rgba(0,0,0,0.5)',
+    transition: 'all 0.1s ease',
+    boxShadow: isActive
+      ? `0 0 20px ${noteColor}80, 0 0 40px ${noteColor}40, inset 0 -2px 4px rgba(0,0,0,0.3)`
+      : '2px 4px 6px rgba(0,0,0,0.6), inset 0 -2px 4px rgba(0,0,0,0.3)',
   } : {
     position: 'relative',
     flex: 1,
     height: '100%',
-    backgroundColor: isActive ? noteColor : THEME.whiteKey,
-    border: '1px solid #ccc',
-    borderRadius: '0 0 8px 8px',
+    background: isActive
+      ? `linear-gradient(180deg, ${noteColor} 0%, ${noteColor}dd 100%)`
+      : 'linear-gradient(180deg, #ffffff 0%, #e8e8e8 60%, #d4d4d4 100%)',
+    border: '1px solid rgba(0,0,0,0.1)',
+    borderRadius: '0 0 10px 10px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-end',
     paddingBottom: '10px',
     cursor: 'pointer',
-    transition: 'background-color 0.08s',
-    boxShadow: isActive ? `0 0 15px ${noteColor}` : 'inset 0 -4px 6px rgba(0,0,0,0.08)',
+    transition: 'all 0.1s ease',
+    boxShadow: isActive
+      ? `0 0 20px ${noteColor}60, 0 0 40px ${noteColor}30, inset 0 -2px 6px rgba(0,0,0,0.05)`
+      : 'inset 0 -6px 10px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.1)',
   };
 
   return (
     <div style={style}>
       <span style={{
         fontSize: isBlack ? '10px' : '13px',
-        fontWeight: 'bold',
+        fontWeight: 600,
         color: isBlack
-          ? (isActive ? '#fff' : '#aaa')
-          : (isActive ? '#fff' : '#555'),
+          ? (isActive ? '#fff' : '#999')
+          : (isActive ? '#fff' : '#666'),
         userSelect: 'none',
       }}>
         {noteName}
@@ -63,10 +71,11 @@ export const PianoKey: React.FC<PianoKeyProps> = React.memo(({ midi, isBlack, is
       <span style={{
         fontSize: isBlack ? '8px' : '10px',
         color: isBlack
-          ? (isActive ? '#ddd' : '#666')
-          : (isActive ? '#eee' : '#999'),
+          ? (isActive ? '#ddd' : '#555')
+          : (isActive ? '#eee' : '#aaa'),
         marginTop: '2px',
         userSelect: 'none',
+        fontWeight: 500,
       }}>
         {keyHint}
       </span>
@@ -82,6 +91,7 @@ export const PianoKey: React.FC<PianoKeyProps> = React.memo(({ midi, isBlack, is
           backgroundColor: noteColor,
           opacity: 0.6,
           animation: 'pulse 1s infinite',
+          boxShadow: `0 0 10px ${noteColor}80`,
         }} />
       )}
     </div>
