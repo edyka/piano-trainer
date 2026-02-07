@@ -2,7 +2,7 @@ import * as Tone from 'tone';
 import { Instrument } from './PianoSampler';
 import { InstrumentType } from '../types';
 
-type SynthType = Tone.FMSynth | Tone.AMSynth | Tone.Synth | Tone.PluckSynth;
+type SynthType = Tone.FMSynth | Tone.AMSynth | Tone.Synth;
 
 function createAccordionSynth(): Tone.PolySynth<Tone.FMSynth> {
   return new Tone.PolySynth(Tone.FMSynth, {
